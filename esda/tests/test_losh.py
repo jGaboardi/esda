@@ -18,6 +18,7 @@ parametrize_w = pytest.mark.parametrize(
     ids=["W", "Graph"],
 )
 
+
 class TestLosh:
     def setup_method(self):
         np.random.seed(10)

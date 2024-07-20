@@ -325,7 +325,6 @@ class TestHB(unittest.TestCase):
     # @unittest.skipIf(PANDAS_EXTINCT, 'missing pandas')
     @unittest.skip("Deprecated")
     def test_Headbanging_Median_Rate_tabular(self):
-
         # test that dataframe columns are treated correctly
         s_ht = sm.Headbanging_Triples(self.d, self.w, k=5)
         sids_hb_r = sm.Headbanging_Median_Rate(

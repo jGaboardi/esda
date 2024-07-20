@@ -9,12 +9,11 @@ parametrize_w = pytest.mark.parametrize(
     "w",
     [
         lat2W(4, 4),
-        graph.Graph.from_W(
-             lat2W(4, 4)
-        ),
+        graph.Graph.from_W(lat2W(4, 4)),
     ],
     ids=["W", "Graph"],
 )
+
 
 class TestJoinCounts:
     """Unit test for Join Counts"""

@@ -49,7 +49,6 @@ class TopoTester(TestCase):
         assert not numpy.allclose(default, middle)
 
     def test_isolation_options(self):
-
         pytest.importorskip("rtree")
 
         marks = self.marks
@@ -79,9 +78,8 @@ class TopoTester(TestCase):
         assert numpy.isnan(iso.loc[4, "parent_rank"])
         assert (iso.dropna().parent_index == 4).all()
         assert (
-            iso.sort_values("marks", ascending=False).index == (
-                iso.sort_values("rank").index
-            )
+            iso.sort_values("marks", ascending=False).index
+            == (iso.sort_values("rank").index)
         ).all()
         assert iso.loc[3, "isolation"] == 1.5
         assert iso.loc[2, "gap"] == (
@@ -97,9 +95,8 @@ class TopoTester(TestCase):
         assert numpy.isnan(iso.loc[3, "parent_index"])
         assert (iso.dropna().parent_index == [4, 2, 5, 5, 3]).all()
         assert (
-            iso.sort_values("marks", ascending=False).index == (
-                iso.sort_values("rank").index
-            )
+            iso.sort_values("marks", ascending=False).index
+            == (iso.sort_values("rank").index)
         ).all()
         assert iso.loc[1, "isolation"] == 1
         assert iso.loc[2, "gap"] == (
