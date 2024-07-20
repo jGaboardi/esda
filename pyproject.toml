@@ -78,7 +78,10 @@ notebooks = [
 
 
 [tool.setuptools.packages.find]
-include = ["esda", "esda.*"]
+include = [
+    "esda",
+    "esda.*",
+]
 
 [tool.ruff]
 line-length = 88
@@ -97,10 +100,14 @@ lint.ignore = [
     "N999",
     "UP007"
 ]
-exclude = ["esda/tests/*", "docs/*"]
+exclude = [
+    "docs/conf.py",
+]
 
 [tool.coverage.run]
-source = ["./esda"]
+source = [
+    "./esda",
+]
 
 [tool.coverage.report]
 exclude_lines = [
@@ -111,4 +118,7 @@ exclude_lines = [
     "except ImportError",
 ]
 ignore_errors = true
-omit = ["esda/tests/*", "docs/conf.py"]
+omit = [
+    "esda/tests/*",
+    "docs/conf.py",
+]

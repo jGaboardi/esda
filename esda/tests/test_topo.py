@@ -1,5 +1,3 @@
-from unittest import TestCase
-
 import numpy
 import pandas
 import pytest
@@ -7,8 +5,8 @@ import pytest
 from ..topo import isolation, prominence, to_elevation, weights
 
 
-class TopoTester(TestCase):
-    def setUp(self):
+class TestTopo:
+    def setup_method(self):
         self.points = numpy.array(
             [[0, 0], [0, 1], [1, 1], [2, 0.5], [0.5, 0.5], [0.75, 0]]
         )
