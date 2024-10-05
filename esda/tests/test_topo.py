@@ -11,7 +11,7 @@ class TestTopo:
             [[0, 0], [0, 1], [1, 1], [2, 0.5], [0.5, 0.5], [0.75, 0]]
         )
         self.marks = numpy.array([-1, 0.5, 1, 2, 3, 1.25])
-        self.cxn = weights.Voronoi(self.points)
+        self.cxn = weights.Voronoi(self.points, use_index=False)
 
     def test_prominence_valid(self):
         w = self.cxn
