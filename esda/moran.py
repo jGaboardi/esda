@@ -67,7 +67,8 @@ class Moran:
     transformation  : string
                       weights transformation,  default is row-standardized "r".
                       Other options include "B": binary,  "D":
-                      doubly-standardized,  "U": untransformed
+                      doubly-standardized,  "O": restore original transformation 
+                      (applicable only if ``w`` is  passed as ``W``)
                       (general weights), "V": variance-stabilizing.
     permutations    : int
                       number of random permutations for calculation of
@@ -352,6 +353,58 @@ class Moran:
             fitline_kwds=fitline_kwds,
         )
 
+    def plot_simulation(self, ax=None, legend=False, fitline_kwds=None, **kwargs):
+        """
+        Global Moran's I simulated reference distribution.
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes, optional
+            Pre-existing axes for the plot, by default None.
+        legend : bool, optional
+            Plot a legend, by default False
+        fitline_kwds : dict, optional
+            Additional keyword arguments for vertical Moran fit line, by default None.
+        **kwargs : keyword arguments, optional
+            Additional keyword arguments for KDE plot passed to ``seaborn.kdeplot``,
+            by default None.
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            Axes object with the Moran scatterplot.
+
+        Notes
+        -----
+        This requires optional dependencies ``matplotlib`` and ``seaborn``.
+
+        Examples
+        --------
+        >>> import libpysal
+        >>> w = libpysal.io.open(libpysal.examples.get_path("stl.gal")).read()
+        >>> f = libpysal.io.open(libpysal.examples.get_path("stl_hom.txt"))
+        >>> y = np.array(f.by_col['HR8893'])
+        >>> from esda.moran import Moran
+        >>> mi = Moran(y,  w)
+
+        Default plot:
+
+        >>> mi.plot_simulation()
+
+        Customized styling that turns the distribution into a pink line and line
+        indicating I to a black line:
+
+        >>> mi.plot_simulation(fitline_kwds={"color": "k"}, color="pink", shade=False)
+        """
+        return _simulation_plot(
+            self,
+            ax=ax,
+            legend=legend,
+            bivariate=False,
+            fitline_kwds=fitline_kwds,
+            **kwargs,
+        )
+
 
 class Moran_BV:  # noqa: N801
     """
@@ -370,7 +423,7 @@ class Moran_BV:  # noqa: N801
                       Other options include
                       "B": binary,
                       "D": doubly-standardized,
-                      "U": untransformed (general weights),
+                      "O": restore original transformation (applicable only if ``w`` is  passed as ``W``),
                       "V": variance-stabilizing.
     permutations    : int
                       number of random permutations for calculation of pseudo
@@ -565,6 +618,72 @@ class Moran_BV:  # noqa: N801
             **stat_kws,
         )
 
+    def plot_scatter(
+        self,
+        ax=None,
+        scatter_kwds=None,
+        fitline_kwds=None,
+    ):
+        """
+        Plot a Moran scatterplot with optional coloring for significant points.
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes, optional
+            Pre-existing axes for the plot, by default None.
+        scatter_kwds : dict, optional
+            Additional keyword arguments for scatter plot, by default None.
+        fitline_kwds : dict, optional
+            Additional keyword arguments for fit line, by default None.
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            Axes object with the Moran scatterplot.
+        """
+        return _scatterplot(
+            self,
+            crit_value=None,
+            bivariate=True,
+            ax=ax,
+            scatter_kwds=scatter_kwds,
+            fitline_kwds=fitline_kwds,
+        )
+
+    def plot_simulation(self, ax=None, legend=False, fitline_kwds=None, **kwargs):
+        """
+        Global Moran's I simulated reference distribution.
+
+        Parameters
+        ----------
+        ax : matplotlib.axes.Axes, optional
+            Pre-existing axes for the plot, by default None.
+        legend : bool, optional
+            Plot a legend, by default False
+        fitline_kwds : dict, optional
+            Additional keyword arguments for vertical Moran fit line, by default None.
+        **kwargs : keyword arguments, optional
+            Additional keyword arguments for KDE plot passed to ``seaborn.kdeplot``,
+            by default None.
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            Axes object with the Moran scatterplot.
+
+        Notes
+        -----
+        This requires optional dependencies ``matplotlib`` and ``seaborn``.
+        """
+        return _simulation_plot(
+            self,
+            ax=ax,
+            legend=legend,
+            bivariate=True,
+            fitline_kwds=fitline_kwds,
+            **kwargs,
+        )
+
 
 def Moran_BV_matrix(variables, w, permutations=0, varnames=None):  # noqa: N802
     """
@@ -688,7 +807,7 @@ class Moran_Rate(Moran):  # noqa: N801
                       Other options include
                       "B": binary,
                       "D": doubly-standardized,
-                      "U": untransformed (general weights),
+                      "O": restore original transformation (applicable only if ``w`` is  passed as ``W``),
                       "V": variance-stabilizing.
     two_tailed      : boolean
                       If True (default), analytical p-values for Moran's I are
@@ -924,7 +1043,7 @@ class Moran_Local:  # noqa: N801
          Other options include
          "B": binary,
          "D": doubly-standardized,
-         "U": untransformed (general weights),
+         "O": restore original transformation (applicable only if ``w`` is  passed as ``W``),
          "V": variance-stabilizing.
     permutations : int
         number of random permutations for calculation of pseudo
@@ -1355,7 +1474,7 @@ class Moran_Local_BV:  # noqa: N801
         Other options include
         "B": binary,
         "D": doubly-standardized,
-        "U": untransformed (general weights),
+        "O": restore original transformation (applicable only if ``w`` is  passed as ``W``),
         "V": variance-stabilizing.
     permutations   : int
         number of random permutations for calculation of pseudo
@@ -1604,6 +1723,41 @@ class Moran_Local_BV:  # noqa: N801
             **stat_kws,
         )
 
+    def plot_scatter(
+        self,
+        crit_value=0.05,
+        ax=None,
+        scatter_kwds=None,
+        fitline_kwds=None,
+    ):
+        """
+        Plot a Moran scatterplot with optional coloring for significant points.
+
+        Parameters
+        ----------
+        crit_value : float, optional
+            Critical value to determine statistical significance, by default 0.05.
+        ax : matplotlib.axes.Axes, optional
+            Pre-existing axes for the plot, by default None.
+        scatter_kwds : dict, optional
+            Additional keyword arguments for scatter plot, by default None.
+        fitline_kwds : dict, optional
+            Additional keyword arguments for fit line, by default None.
+
+        Returns
+        -------
+        matplotlib.axes.Axes
+            Axes object with the Moran scatterplot.
+        """
+        return _scatterplot(
+            self,
+            crit_value=crit_value,
+            bivariate=True,
+            ax=ax,
+            scatter_kwds=scatter_kwds,
+            fitline_kwds=fitline_kwds,
+        )
+
 
 class Moran_Local_Rate(Moran_Local):  # noqa: N801
     """
@@ -1625,7 +1779,7 @@ class Moran_Local_Rate(Moran_Local):  # noqa: N801
         Other options include
         "B": binary,
         "D": doubly-standardized,
-        "U": untransformed (general weights),
+        "O": restore original transformation (applicable only if ``w`` is  passed as ``W``),
         "V": variance-stabilizing.
     permutations : int
         number of random permutations for calculation of pseudo
@@ -1931,6 +2085,7 @@ def _get_cluster_labels(moran_local, crit_value):
 def _scatterplot(
     moran,
     crit_value=0.05,
+    bivariate=False,
     ax=None,
     scatter_kwds=None,
     fitline_kwds=None,
@@ -1975,7 +2130,7 @@ def _scatterplot(
         fitline_kwds = dict()
 
     if crit_value is not None:
-        labels = moran.get_cluster_labels(crit_value)
+        labels = _get_cluster_labels(moran, crit_value)
         # TODO: allow customization of colors in here and in plot and explore
         # TODO: in a way to keep them easily synced
         colors5_mpl = {
@@ -1994,15 +2149,21 @@ def _scatterplot(
     if ax is None:
         _, ax = plt.subplots()
 
-    # set labels
-    ax.set_xlabel("Attribute")
-    ax.set_ylabel("Spatial Lag")
-    ax.set_title("Moran Local Scatterplot")
+    ax.set_title("Moran Scatterplot")
 
-    # plot and set standards
-    lag = lag_spatial(moran.w, moran.z)
+    if bivariate:
+        x = moran.zx
+        lag = lag_spatial(moran.w, moran.zy)
+        ax.set_xlabel("Attribute X")
+        ax.set_ylabel("Spatial Lag of Y")
+    else:
+        x = moran.z
+        lag = lag_spatial(moran.w, moran.z)
+        ax.set_xlabel("Attribute")
+        ax.set_ylabel("Spatial Lag")
+
     fit = stats.linregress(
-        moran.z,
+        x,
         lag,
     )
     # v- and hlines
@@ -2011,16 +2172,59 @@ def _scatterplot(
     if crit_value is not None:
         fitline_kwds.setdefault("color", "k")
         scatter_kwds.setdefault("c", colors5)
-        ax.plot(moran.z, fit.intercept + fit.slope * moran.z, **fitline_kwds)
-        ax.scatter(moran.z, lag, **scatter_kwds)
+        ax.plot(x, fit.intercept + fit.slope * x, **fitline_kwds)
+        ax.scatter(x, lag, **scatter_kwds)
     else:
         scatter_kwds.setdefault("color", "#bababa")
         fitline_kwds.setdefault("color", "#d6604d")
-        ax.plot(moran.z, fit.intercept + fit.slope * moran.z, **fitline_kwds)
-        ax.scatter(moran.z, lag, **scatter_kwds)
+        ax.plot(x, fit.intercept + fit.slope * x, **fitline_kwds)
+        ax.scatter(x, lag, **scatter_kwds)
 
     ax.set_aspect("equal")
 
+    return ax
+
+
+def _simulation_plot(
+    moran, ax=None, legend=False, bivariate=False, fitline_kwds=None, **kwargs
+):
+    try:
+        import seaborn as sns
+        from matplotlib import pyplot as plt
+    except ImportError as err:
+        raise ImportError(
+            "matplotlib and seaborn must be installed to plot the simulation."
+        ) from err
+    # to set default as an empty dictionary that is later filled with defaults
+    if fitline_kwds is None:
+        fitline_kwds = dict()
+
+    if ax is None:
+        _, ax = plt.subplots()
+
+    # plot distribution
+    shade = kwargs.pop("shade", True)
+    color = kwargs.pop("color", "#bababa")
+    sns.kdeplot(
+        moran.sim,
+        fill=shade,
+        color=color,
+        ax=ax,
+        label="Distribution of simulated Is",
+        **kwargs,
+    )
+
+    exp = moran.EI_sim if bivariate else moran.EI
+
+    # customize plot
+    fitline_kwds.setdefault("color", "#d6604d")
+    ax.vlines(moran.I, 0, 1, **fitline_kwds, label="Moran's I")
+    ax.vlines(exp, 0, 1, label="Expected I")
+    ax.set_title("Reference Distribution")
+    ax.set_xlabel(f"Moran's I: {moran.I:.2f}")
+
+    if legend:
+        ax.legend()
     return ax
 
 
