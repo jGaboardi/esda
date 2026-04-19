@@ -632,9 +632,8 @@ def moment_of_inertia(collection, normalize=False, ref_pt=None):
     return numpy.asarray(Js)
 
 
-second_moment_of_area = (
-    moment_of_inertia  # Alias for users familiar with math/engineering terminology
-)
+# Alias for users familiar with math/engineering terminology
+second_moment_of_area = moment_of_inertia
 
 
 def second_areal_moment(collection):
