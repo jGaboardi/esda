@@ -2,7 +2,7 @@ import libpysal
 import numpy as np
 import pytest
 from libpysal.common import ATOL, RTOL, pandas
-from libpysal.weights.distance import KNN, Kernel
+from libpysal.weights.distance import Kernel
 
 from .. import smoothing as sm
 
@@ -263,91 +263,6 @@ class TestSRate:
         for col, answer in zip(outcols, answers, strict=True):
             np.testing.assert_allclose(
                 out_df[col].values[:5], answer, rtol=1e-4, atol=1e-7
-            )
-
-
-class TestHB:
-    def setup_method(self):
-        sids = libpysal.io.open(libpysal.examples.get_path("sids2.shp"), "r")
-        self.sids = sids
-        self.d = np.array([i.centroid for i in sids])
-        self.w = KNN.from_array(self.d, k=5)
-        if not self.w.id_order_set:
-            self.w.id_order = self.w.id_order
-        sids_db = libpysal.io.open(libpysal.examples.get_path("sids2.dbf"), "r")
-        self.b, self.e = np.array(sids_db[:, 8]), np.array(sids_db[:, 9])
-        self.sids_hb_rr5 = np.array([0.00075586, 0.0, 0.0008285, 0.0018315, 0.00498891])
-        self.sids_hb_r2r5 = np.array(
-            [0.0008285, 0.00084331, 0.00086896, 0.0018315, 0.00498891]
-        )
-        self.sids_hb_r3r5 = np.array(
-            [0.00091659, 0.0, 0.00156838, 0.0018315, 0.00498891]
-        )
-        if not PANDAS_EXTINCT:
-            self.df = sids_db.to_df()
-            self.ename = "SID74"
-            self.bname = "BIR74"
-            self.enames = [self.ename, "SID79"]
-            self.bnames = [self.bname, "BIR79"]
-            self.sids79r = np.array([0.000563, 0.001659, 0.001879, 0.002410, 0.002720])
-
-    @pytest.mark.skip("Deprecated")
-    def test_triples(self):
-        ht = sm.Headbanging_Triples(self.d, self.w)
-        assert len(ht.triples) == len(self.d)
-        ht2 = sm.Headbanging_Triples(self.d, self.w, edgecor=True)
-        assert hasattr(ht2, "extra")
-        assert len(ht2.triples) == len(self.d)
-        htr = sm.Headbanging_Median_Rate(self.e, self.b, ht2, iteration=5)
-        assert len(htr.r) == len(self.e)
-        for i in htr.r:
-            assert i is not None
-
-    @pytest.mark.skip("Deprecated")
-    def test_median_rate(self):
-        s_ht = sm.Headbanging_Triples(self.d, self.w, k=5)
-        sids_hb_r = sm.Headbanging_Median_Rate(self.e, self.b, s_ht)
-        np.testing.assert_array_almost_equal(self.sids_hb_rr5, sids_hb_r.r[:5])
-        sids_hb_r2 = sm.Headbanging_Median_Rate(self.e, self.b, s_ht, iteration=5)
-        np.testing.assert_array_almost_equal(self.sids_hb_r2r5, sids_hb_r2.r[:5])
-        sids_hb_r3 = sm.Headbanging_Median_Rate(self.e, self.b, s_ht, aw=self.b)
-        np.testing.assert_array_almost_equal(self.sids_hb_r3r5, sids_hb_r3.r[:5])
-
-    @pytest.mark.skip("Deprecated")
-    def test_median_rate_tabular(self):
-        # test that dataframe columns are treated correctly
-        s_ht = sm.Headbanging_Triples(self.d, self.w, k=5)
-        sids_hb_r = sm.Headbanging_Median_Rate(
-            self.df[self.ename], self.df[self.bname], s_ht
-        )
-        self.assertIsInstance(sids_hb_r.r, np.ndarray)
-        np.testing.assert_array_almost_equal(self.sids_hb_rr5, sids_hb_r.r[:5])
-
-        sids_hb_r2 = sm.Headbanging_Median_Rate(
-            self.df[self.ename], self.df[self.bname], s_ht, iteration=5
-        )
-        assert isinstance(sids_hb_r2.r, np.ndarray)
-        np.testing.assert_array_almost_equal(self.sids_hb_r2r5, sids_hb_r2.r[:5])
-
-        sids_hb_r3 = sm.Headbanging_Median_Rate(
-            self.df[self.ename], self.df[self.bname], s_ht, aw=self.df[self.bname]
-        )
-        assert isinstance(sids_hb_r3.r, np.ndarray)
-        np.testing.assert_array_almost_equal(self.sids_hb_r3r5, sids_hb_r3.r[:5])
-
-        # test that the by col on multiple names works correctly
-        sids_hr_df = sm.Headbanging_Median_Rate.by_col(
-            self.df, self.enames, self.bnames, w=self.w
-        )
-        outcols = [
-            f"{e}-{b}_headbanging_median_rate"
-            for e, b in zip(self.enames, self.bnames, strict=True)
-        ]
-        for col, answer in zip(outcols, [self.sids_hb_rr5, self.sids79r], strict=True):
-            this_col = sids_hr_df[col].values
-            assert isinstance(this_col, np.ndarray)
-            np.testing.assert_allclose(
-                sids_hr_df[col][:5], answer, rtol=RTOL, atol=ATOL * 10
             )
 
 
