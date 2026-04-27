@@ -64,6 +64,10 @@ dev = [
     "pre-commit"
 ]
 docs = [
+    "myst-parser",
+    "seaborn",
+    "watermark",
+    "statsmodels",
     "nbsphinx",
     "numpydoc",
     "pandoc",
