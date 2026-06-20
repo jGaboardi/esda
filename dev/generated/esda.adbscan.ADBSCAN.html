@@ -380,6 +380,30 @@
   
   
     <li class="md-nav__item">
+      <a href="../user-guide/getting_started.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Getting Started</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../user-guide/global.html" class="md-nav__link">
         
   
@@ -434,6 +458,30 @@
   
   <span class="md-ellipsis">
     <span>Spatial Diagnostics</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../user-guide/clustering.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Spatial Clustering</span>
     
   </span>
   
@@ -1481,6 +1529,30 @@
   
   <span class="md-ellipsis">
     <span>Getis-<wbr>Ord Statistics</span>
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../api.html#inspection-plots" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    <span>Inspection plots</span>
     
   </span>
   
@@ -2606,12 +2678,12 @@
 <dl class="py class objdesc">
 <dt class="sig sig-object highlight sig-wrap py" id="esda.adbscan.ADBSCAN">
 <em class="property"><span class="k"><span class="pre">class</span></span><span class="w"> </span></em><span class="sig-prename descclassname"><span class="pre">esda.adbscan.</span></span><span class="sig-name descname"><span class="pre">ADBSCAN</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.eps" title="esda.adbscan.ADBSCAN.__init__.eps (Python parameter) — The maximum distance between two samples for them to be considered as in the same neighborhood."><span class="n"><span class="pre">eps</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.min_samples" title="esda.adbscan.ADBSCAN.__init__.min_samples (Python parameter) — The number of samples (or total weight) in a neighborhood for a point to be considered as a core point."><span class="n"><span class="pre">min_samples</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.algorithm" title="esda.adbscan.ADBSCAN.__init__.algorithm (Python parameter) — The algorithm to be used by the NearestNeighbors module to compute pointwise distances and find nearest neighbors. See NearestNeighbors module documentation for details."><span class="n"><span class="pre">algorithm</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;auto&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.n_jobs" title="esda.adbscan.ADBSCAN.__init__.n_jobs (Python parameter) — [Optional."><span class="n"><span class="pre">n_jobs</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="mi">1</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.pct_exact" title="esda.adbscan.ADBSCAN.__init__.pct_exact (Python parameter) — [Optional."><span class="n"><span class="pre">pct_exact</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="mf">0.1</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.reps" title="esda.adbscan.ADBSCAN.__init__.reps (Python parameter) — [Optional."><span class="n"><span class="pre">reps</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="mi">100</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.keep_solus" title="esda.adbscan.ADBSCAN.__init__.keep_solus (Python parameter) — [Optional."><span class="n"><span class="pre">keep_solus</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">False</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.__init__.pct_thr" title="esda.adbscan.ADBSCAN.__init__.pct_thr (Python parameter) — [Optional."><span class="n"><span class="pre">pct_thr</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="mf">0.9</span></code></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/adbscan.py#L22-L236"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN" title="Link to this definition">¶</a></dt>
-<dd><p>A-DBSCAN, as introduced in <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id23" title="Daniel Arribas-Bel, M-À Garcia-López, and Elisabet Viladecans-Marsal. Building(s and) cities: delineating urban areas with a machine learning algorithm. Journal of Urban Economics, 125:103217, 2021. Delineation of Urban Areas. doi:10.1016/j.jue.2019.103217.">Arribas-Bel <em>et al.</em>, 2021</a>]</span>.</p>
+<dd><p>A-DBSCAN, as introduced in <span class="bibtex-citation" id="id1">[<a class="reference internal" href="../references.html#id14" title="Daniel Arribas-Bel, M-À Garcia-López, and Elisabet Viladecans-Marsal. Building(s and) cities: delineating urban areas with a machine learning algorithm. Journal of Urban Economics, 125:103217, 2021. Delineation of Urban Areas. doi:10.1016/j.jue.2019.103217.">Arribas-Bel <em>et al.</em>, 2021</a>]</span>.</p>
 <p>A-DSBCAN is an extension of the original DBSCAN algorithm that creates an
 ensemble of solutions generated by running DBSCAN on a random subset and
 “extending” the solution to the rest of the sample through
 nearest-neighbor regression.</p>
-<p>See the original reference (<span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id23" title="Daniel Arribas-Bel, M-À Garcia-López, and Elisabet Viladecans-Marsal. Building(s and) cities: delineating urban areas with a machine learning algorithm. Journal of Urban Economics, 125:103217, 2021. Delineation of Urban Areas. doi:10.1016/j.jue.2019.103217.">Arribas-Bel <em>et al.</em>, 2021</a>]</span>) for more details or
+<p>See the original reference (<span class="bibtex-citation" id="id2">[<a class="reference internal" href="../references.html#id14" title="Daniel Arribas-Bel, M-À Garcia-López, and Elisabet Viladecans-Marsal. Building(s and) cities: delineating urban areas with a machine learning algorithm. Journal of Urban Economics, 125:103217, 2021. Delineation of Urban Areas. doi:10.1016/j.jue.2019.103217.">Arribas-Bel <em>et al.</em>, 2021</a>]</span>) for more details or
 the notebook guide for an illustration.
 …</p>
 <dl class="field-list simple">
@@ -2803,7 +2875,7 @@ coordinates in <cite>xys</cite></p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="esda.adbscan.ADBSCAN.fit_predict">
-<span class="sig-name descname"><span class="pre">fit_predict</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.fit_predict.X" title="esda.adbscan.ADBSCAN.fit_predict.X (Python parameter) — Input data."><span class="n"><span class="pre">X</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.fit_predict.y" title="esda.adbscan.ADBSCAN.fit_predict.y (Python parameter) — Not used, present for API consistency by convention."><span class="n"><span class="pre">y</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#esda.adbscan.ADBSCAN.fit_predict.kwargs" title="esda.adbscan.ADBSCAN.fit_predict.kwargs (Python parameter) — Arguments to be passed to fit."><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/base.py#L683-L708"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.fit_predict" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">fit_predict</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.fit_predict.X" title="esda.adbscan.ADBSCAN.fit_predict.X (Python parameter) — Input data."><span class="n"><span class="pre">X</span></span></a></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.fit_predict.y" title="esda.adbscan.ADBSCAN.fit_predict.y (Python parameter) — Not used, present for API consistency by convention."><span class="n"><span class="pre">y</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">None</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#esda.adbscan.ADBSCAN.fit_predict.kwargs" title="esda.adbscan.ADBSCAN.fit_predict.kwargs (Python parameter) — Arguments to be passed to fit."><span class="n"><span class="pre">kwargs</span></span></a></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/base.py#L745-L770"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.fit_predict" title="Link to this definition">¶</a></dt>
 <dd><p>Perform clustering on <cite>X</cite> and returns cluster labels.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="esda.adbscan.ADBSCAN.fit_predict-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#esda.adbscan.ADBSCAN.fit_predict-parameters" title="Permalink to this headline">¶</a></dt>
@@ -2831,13 +2903,13 @@ coordinates in <cite>xys</cite></p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="esda.adbscan.ADBSCAN.get_metadata_routing">
-<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/utils/_metadata_requests.py#L1550-L1562"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.get_metadata_routing" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_metadata_routing</span></span><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/utils/_metadata_requests.py#L1737-L1749"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.get_metadata_routing" title="Link to this definition">¶</a></dt>
 <dd><p>Get metadata routing of this object.</p>
-<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a> on how the routing
+<p>Please check <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a> on how the routing
 mechanism works.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="esda.adbscan.ADBSCAN.get_metadata_routing-returns">Returns<span class="colon">:</span><a class="headerlink" href="#esda.adbscan.ADBSCAN.get_metadata_routing-returns" title="Permalink to this headline">¶</a></dt>
-<dd class="field-odd"><p><strong>routing</strong> – A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
+<dd class="field-odd"><p><strong>routing</strong> – A <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.utils.metadata_routing.MetadataRequest.html#sklearn.utils.metadata_routing.MetadataRequest" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">MetadataRequest</span></code></a> encapsulating
 routing information.</p>
 </dd>
 <dt class="field-even" id="esda.adbscan.ADBSCAN.get_metadata_routing-return-type">Return type<span class="colon">:</span><a class="headerlink" href="#esda.adbscan.ADBSCAN.get_metadata_routing-return-type" title="Permalink to this headline">¶</a></dt>
@@ -2848,7 +2920,7 @@ routing information.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="esda.adbscan.ADBSCAN.get_params">
-<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.get_params.deep" title="esda.adbscan.ADBSCAN.get_params.deep (Python parameter) — If True, will return the parameters for this estimator and contained subobjects that are estimators."><span class="n"><span class="pre">deep</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/base.py#L240-L262"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.get_params" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">get_params</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.get_params.deep" title="esda.adbscan.ADBSCAN.get_params.deep (Python parameter) — If True, will return the parameters for this estimator and contained subobjects that are estimators."><span class="n"><span class="pre">deep</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="kc">True</span></code></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/base.py#L248-L270"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.get_params" title="Link to this definition">¶</a></dt>
 <dd><p>Get parameters for this estimator.</p>
 <dl class="field-list simple">
 <dt class="field-odd" id="esda.adbscan.ADBSCAN.get_params-parameters">Parameters<span class="colon">:</span><a class="headerlink" href="#esda.adbscan.ADBSCAN.get_params-parameters" title="Permalink to this headline">¶</a></dt>
@@ -2869,12 +2941,12 @@ contained subobjects that are estimators.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="esda.adbscan.ADBSCAN.set_fit_request">
-<span class="sig-name descname"><span class="pre">set_fit_request</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.set_fit_request.sample_weight" title="esda.adbscan.ADBSCAN.set_fit_request.sample_weight (Python parameter) — Metadata routing for sample_weight parameter in fit."><span class="n"><span class="pre">sample_weight</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;$UNCHANGED$&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.set_fit_request.xy" title="esda.adbscan.ADBSCAN.set_fit_request.xy (Python parameter) — Metadata routing for xy parameter in fit."><span class="n"><span class="pre">xy</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;$UNCHANGED$&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/utils/_metadata_requests.py#L1315-L1360"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.set_fit_request" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_fit_request</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="keyword-only-separator o"><abbr title="Keyword-only parameters separator (PEP 3102)"><span class="pre">*</span></abbr></span></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.set_fit_request.sample_weight" title="esda.adbscan.ADBSCAN.set_fit_request.sample_weight (Python parameter) — Metadata routing for sample_weight parameter in fit."><span class="n"><span class="pre">sample_weight</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;$UNCHANGED$&#39;</span></code></em>, </span><span class="sig-param-decl"><em class="sig-param"><a class="n reference internal" href="#esda.adbscan.ADBSCAN.set_fit_request.xy" title="esda.adbscan.ADBSCAN.set_fit_request.xy (Python parameter) — Metadata routing for xy parameter in fit."><span class="n"><span class="pre">xy</span></span></a><span class="o"><span class="pre">=</span></span><code class="code python default_value docutils literal highlight highlight-python"><span class="s1">&#39;$UNCHANGED$&#39;</span></code></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/utils/_metadata_requests.py#L1434-L1479"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.set_fit_request" title="Link to this definition">¶</a></dt>
 <dd><p>Configure whether metadata should be requested to be passed to the <code class="docutils literal notranslate"><span class="pre">fit</span></code> method.</p>
 <p>Note that this method is only relevant when this estimator is used as a
-sub-estimator within a <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-meta-estimator" title="(in scikit-learn v1.8)"><span class="xref std std-term">meta-estimator</span></a> and metadata routing is enabled
-with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.set_config.html#sklearn.set_config" title="(in scikit-learn v1.8)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code></a>).
-Please check the <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.8)"><span class="xref std std-ref">User Guide</span></a> on how the routing
+sub-estimator within a <a class="reference external" href="https://scikit-learn.org/stable/glossary.html#term-meta-estimator" title="(in scikit-learn v1.9)"><span class="xref std std-term">meta-estimator</span></a> and metadata routing is enabled
+with <code class="docutils literal notranslate"><span class="pre">enable_metadata_routing=True</span></code> (see <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.set_config.html#sklearn.set_config" title="(in scikit-learn v1.9)"><code class="xref py py-func docutils literal notranslate"><span class="pre">sklearn.set_config()</span></code></a>).
+Please check the <a class="reference external" href="https://scikit-learn.org/stable/metadata_routing.html#metadata-routing" title="(in scikit-learn v1.9)"><span class="xref std std-ref">User Guide</span></a> on how the routing
 mechanism works.</p>
 <p>The options for each parameter are:</p>
 <ul class="simple">
@@ -2909,10 +2981,10 @@ parameters and not others.</p>
 
 <dl class="py method objdesc">
 <dt class="sig sig-object highlight py" id="esda.adbscan.ADBSCAN.set_params">
-<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#esda.adbscan.ADBSCAN.set_params.params" title="esda.adbscan.ADBSCAN.set_params.params (Python parameter) — Estimator parameters."><span class="n"><span class="pre">params</span></span></a></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/base.py#L338-L380"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.set_params" title="Link to this definition">¶</a></dt>
+<span class="sig-name descname"><span class="pre">set_params</span></span><span class="sig-paren">(</span><span class="sig-param-decl"><em class="sig-param"><span class="o"><span class="pre">**</span></span><a class="n reference internal" href="#esda.adbscan.ADBSCAN.set_params.params" title="esda.adbscan.ADBSCAN.set_params.params (Python parameter) — Estimator parameters."><span class="n"><span class="pre">params</span></span></a></em></span><span class="sig-paren">)</span><a class="reference external" href="https://github.com/pysal/esda/blob/main/esda/../../../../micromamba/envs/test/lib/python3.14/site-packages/sklearn/base.py#L400-L442"><span class="viewcode-link"><span class="pre">[source]</span></span></a><a class="headerlink" href="#esda.adbscan.ADBSCAN.set_params" title="Link to this definition">¶</a></dt>
 <dd><p>Set the parameters of this estimator.</p>
 <p>The method works on simple estimators as well as on nested objects
-(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.8)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
+(such as <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.pipeline.Pipeline.html#sklearn.pipeline.Pipeline" title="(in scikit-learn v1.9)"><code class="xref py py-class docutils literal notranslate"><span class="pre">Pipeline</span></code></a>). The latter have
 parameters of the form <code class="docutils literal notranslate"><span class="pre">&lt;component&gt;__&lt;parameter&gt;</span></code> so that it’s
 possible to update each component of a nested object.</p>
 <dl class="field-list simple">
